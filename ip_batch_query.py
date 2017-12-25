@@ -1,10 +1,9 @@
-#!/bin/python3
 from urllib import parse,request
+import time
+import datetime
 
-##采用“站长之家”的ip查询（http://ip.chinaz.com/siteip）
-##查询完结果保存在“ip_op.txt”文件
-def zzzj_ip_post(line):
-    import time
+
+def post(line):
     t=time.time()
     t=str(int(round(t*1000)))
     data={'ip':line}
@@ -22,12 +21,19 @@ def zzzj_ip_post(line):
     print(res[7])
     time.sleep(0.1)
 
-
-##将要查询的ip地址放在“ip.txt”文件中
-if __name__ == '__main__':
+def main():
+    i=0
     for line in open("ip.txt"):
-        line=line.replace('\n',"").replace('\t',"")
-        print(line)
-        # get(line)
-        zzzj_ip_post(line)
+        if i in range(0,100) :
+            line=line.replace('\n',"").replace('\t',"")
+            print(line)
+            print(i)
+            post(line)
+            i=i+1
+        else:
+            i=0
+            time.sleep(10)
 
+
+if __name__ == '__main__':
+    main()
