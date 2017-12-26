@@ -3,7 +3,7 @@ import time
 import datetime
 
 ###ip地址保存在“ip.txt”中
-##查询结果保存在“ip_op.txt”中
+###查询结果保存在“ip_op.txt”中
 
 def post(line):
     t=time.time()
